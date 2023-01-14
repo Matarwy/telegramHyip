@@ -22,7 +22,7 @@ MarkupSafe>=1.0
 parsimonious>=0.8.0
 peewee>=3.6.4
 pycryptodome>=3.6.4
-python-telegram-bot>=10.1.0
+python-telegram-bot==10.1.0
 requests>=2.19.1
 rlp>=1.0.1
 six>=1.11.0
