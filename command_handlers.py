@@ -15,7 +15,7 @@ def _start_command(bot, update, args):
 
     try:
         user = User.get(chat_id=chat_id)
-        text = f'{first_name}, вы уже зарегистрированны в системе. Добро пожаловать домой!'
+        text = f'{first_name}, you are already registered in the system. Welcome home!'
     except DoesNotExist:
         referral = None
         try:
@@ -33,7 +33,7 @@ def _start_command(bot, update, args):
             referral=referral
         )
 
-        text = f'{first_name}, вы были успешно зарегистрированны в системе!'
+        text = f'{first_name}, you have been successfully registered in the system!'
 
     bot.send_message(chat_id=user.chat_id, text=text, reply_markup=keyboards.main_keyboard())
     return bot_states.MAIN
@@ -88,7 +88,7 @@ def _withdrawal_command(bot, update):
 def _demo_top_up(bot, update):
     bot.send_message(
         chat_id=bot.chat_id,
-        text='Сколько?',
+        text='How much?',
         reply_markup=keyboards.back_keyboard()
     )
 

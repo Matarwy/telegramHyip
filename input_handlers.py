@@ -46,7 +46,7 @@ def user_is_spamming(chat_id):
 
 @run_async
 def notify_ban(bot, user_id, ban_hours):
-    text = f'Поздравляем! Вы были забанены за флуд на кол-во часов: {ban_hours}.'
+    text = f'Congratulations! You have been banned for flooding for the number of hours: {ban_hours}.'
     bot.send_message(chat_id=user_id, text=text)
 
 
@@ -108,13 +108,13 @@ def _callback(bot, update):
 
     if query.data == 'partners_excel':
         if user_request_excel_too_often(user_id, _partners_excel_query_time):
-            text = 'Нельзя запрашивать excel партнёров чаще, чем раз в минуту.'
+            text = 'You can not request excel partners more often than once a minute.'
             bot.send_message(chat_id=user_id, text=text)
             return
         excel_generator.partners_excel(bot, user)
     elif query.data == 'transactions_excel':
         if user_request_excel_too_often(user_id, _transactions_excel_query_time):
-            text = 'Нельзя запрашивать excel транзакций чаще, чем раз в минуту.'
+            text = 'You cannot query excel transactions more than once per minute.'
             bot.send_message(chat_id=user_id, text=text)
             return
         excel_generator.transactions_excel(bot, user)
@@ -130,7 +130,7 @@ class MainMenu:
         withdrawals = user.withdrawals.order_by(Withdrawal.id.desc()).limit(count_of_last_trx)
         keyboard = [
             [
-                InlineKeyboardButton("Скачать excel таблицу транзакций", callback_data='transactions_excel'),
+                InlineKeyboardButton("Download excel transaction table", callback_data='transactions_excel'),
             ],
         ]
         reply_markup = InlineKeyboardMarkup(keyboard)
@@ -147,7 +147,7 @@ class MainMenu:
     def partners(bot, user):
         keyboard = [
             [
-                InlineKeyboardButton("Скачать excel таблицу партнёров", callback_data='partners_excel'),
+                InlineKeyboardButton("Download excel table of partners", callback_data='partners_excel'),
             ],
         ]
         reply_markup = InlineKeyboardMarkup(keyboard)
@@ -182,7 +182,7 @@ class MainMenu:
         text = ''
         import config
         if config.DEBUG:
-            text = '/demo_top_up - пополнить счет в демо режиме\n'
+            text = '/demo_top_up - top up your account in demo mode\n'
 
         if user.wallet:
             text += lang.top_up(user.wallet)
@@ -408,7 +408,7 @@ def _demo_top_up(bot, update):
     try:
         amount = _validate_transaction(user, text, demo=True)
     except ValueError:
-        bot.send_message(chat_id=chat_id, text='Инпут ерор)))))00')
+        bot.send_message(chat_id=chat_id, text='Input error)))))00')
         return bot_states.DEMO_TOP_UP
 
     top_up = TopUp.create(

@@ -8,8 +8,8 @@ def timed_out_handler(bot, update):
     user_id = update.message.chat_id
     bot.send_message(
         chat_id=user_id,
-        text='Во время обработки прошлого запроса произошла ошибка.\n'
-             'Пожалуйста сообщите в тех поддержку.'
+        text='An error occurred while processing the last request.\n'
+             'Please report to those support.'
     )
     return bot_states.MAIN
 

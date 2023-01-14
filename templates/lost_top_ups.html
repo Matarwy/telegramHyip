@@ -26,10 +26,10 @@
         <td>
             <label>User id</label>
             <input id="user_id">
-            <button type="button" onclick="receivedTopUp({{top_up.id}})">Зачислить</button>
+            <button type="button" onclick="receivedTopUp({{top_up.id}})">Enroll</button>
         </td>
         <td>
-            <button type="button" onclick="deleteTopUp({{top_up.id}})">Удалить</button>
+            <button type="button" onclick="deleteTopUp({{top_up.id}})">Delete</button>
         </td>
     </tr>
   {% endfor %}
@@ -46,11 +46,11 @@
                 "id": id,
             }),
           success: function(msg) {
-                alert("Успех");
+                alert("Success");
                 window.location.reload();
           },
           error: function(XMLHttpRequest, textStatus, errorThrown) {
-                alert('Ошибка: ' + XMLHttpRequest.responseText);
+                alert('Error: ' + XMLHttpRequest.responseText);
           }
         });
     }
@@ -67,11 +67,11 @@
                 "user_id": user_id
             }),
           success: function(msg) {
-                alert("Успех");
+                alert("Success");
                 window.location.reload();
           },
           error: function(XMLHttpRequest, textStatus, errorThrown) {
-                alert('Ошибка: ' + XMLHttpRequest.responseText);
+                alert('Error: ' + XMLHttpRequest.responseText);
           }
         });
     }

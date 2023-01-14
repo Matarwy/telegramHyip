@@ -9,20 +9,20 @@ _EXCEL_DOCS_FOLDER = 'docs'
 def transactions_excel(bot, user):
 
     transfer_from = {
-        'Сумма': 'amount',
-        'Дата': 'created_at',
-        'От пользователя': 'from_user',
+        'Sum': 'amount',
+        'Date': 'created_at',
+        'From user': 'from_user',
     }
 
     transfer_to = {
-        'Сумма': 'amount',
-        'Дата': 'created_at',
-        'Пользователю': 'to_user',
+        'Sum': 'amount',
+        'Date': 'created_at',
+        'User': 'to_user',
     }
 
     cols = {
-        'Сумма': 'amount',
-        'Дата': 'created_at',
+        'Sum': 'amount',
+        'Date': 'created_at',
     }
 
     withdrawals = user.withdrawals
@@ -40,24 +40,24 @@ def transactions_excel(bot, user):
     header.set_font_size(15)
 
     row = 0
-    worksheet.write(row, 0, 'Выводы', header)
+    worksheet.write(row, 0, 'findings', header)
     row += 1
 
     row = _write_models_to_excel(withdrawals, cols, worksheet, bold, row)
     row += 1
-    worksheet.write(row, 0, 'Пополнения', header)
+    worksheet.write(row, 0, 'Refills', header)
     row += 1
     row = _write_models_to_excel(top_ups, cols, worksheet, bold, row)
     row += 1
-    worksheet.write(row, 0, 'Переводы в депозит', header)
+    worksheet.write(row, 0, 'Transfers to deposit', header)
     row += 1
     row = _write_models_to_excel(deposit_transfers, cols, worksheet, bold, row)
     row += 1
-    worksheet.write(row, 0, 'Переводы другим пользователям', header)
+    worksheet.write(row, 0, 'Transfers to other users', header)
     row += 1
     row = _write_models_to_excel(transfers_from, transfer_to, worksheet, bold, row)
     row += 1
-    worksheet.write(row, 0, 'Переводы вам от других пользователей', header)
+    worksheet.write(row, 0, 'Transfers to you from other users', header)
     row += 1
     row = _write_models_to_excel(transfers_to, transfer_from, worksheet, bold, row)
 
@@ -68,11 +68,11 @@ def transactions_excel(bot, user):
 @run_async
 def partners_excel(bot, user):
     cols = {
-        'Телеграм username': 'username',
-        'Имя': 'first_name',
-        'Фамилия': 'last_name',
-        'Депозит': 'deposit',
-        'Дата регистрации': 'created_at'
+        'Telegram username': 'username',
+        'Name': 'first_name',
+        'Family name': 'last_name',
+        'Deposit': 'deposit',
+        'Date of registration': 'created_at'
     }
 
     partners_list = user.partners_per_levels
@@ -87,7 +87,7 @@ def partners_excel(bot, user):
     for level in partners_list:
         if not row == 0:
             row += 2
-        worksheet.write(row, 0, f'{level_number + 1} реферальный уровень', bold)
+        worksheet.write(row, 0, f'{level_number + 1} referral level', bold)
         if level_number == 0:
             worksheet.write(row, 2, user.first_level_partners_deposit, bold)
         elif level_number == 1:

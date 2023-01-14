@@ -29,11 +29,11 @@ def reward_users(bot):
 
         bot.send_message(
             chat_id=user.chat_id,
-            text=f'Вы получили начисления:\n'
-                 f'Депозит: {deposit_reward:.7f} ETH\n'
-                 f'1 уровень: {first_level_reward:.7f} ETH\n'
-                 f'2 уровень: {second_level_reward:.7f} ETH\n'
-                 f'3 уровень: {third_level_reward:.7f} ETH'
+            text=f'You received accruals:\n'
+                 f'Deposit: {deposit_reward:.7f} ETH\n'
+                 f'1 level: {first_level_reward:.7f} ETH\n'
+                 f'2 level: {second_level_reward:.7f} ETH\n'
+                 f'3 level: {third_level_reward:.7f} ETH'
         )
 
 
@@ -43,8 +43,8 @@ def notify_inactive_users(bot):
         (User.created_at < four_days_ago) & (User.deposit < tariffs.eth_minimal_deposit())
     )
 
-    text = f'Мы видим, что вы ещё не начали зарабатывать с нами.\n' \
-           f'Если у вас есть вопросы - напишите нам в техподдержку и мы поможем:\n' \
+    text = f'We see that you have not yet started earning with us.\n' \
+           f'If you have any questions - write to us in technical support and we will help:\n' \
            f'{config.get_support_account()}'
     for user in inactive_users:
         bot.send_message(

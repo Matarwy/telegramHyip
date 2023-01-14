@@ -261,7 +261,7 @@ def increase_user_deposit():
         user_id = int(user_id)
     except TypeError:
         return Response(
-            response='Неправильный id пользователя',
+            response='Invalid user id',
             status=400,
             mimetype='application/json'
         )
@@ -269,7 +269,7 @@ def increase_user_deposit():
         user = User.get(User.chat_id == user_id)
     except DoesNotExist as e:
         return Response(
-            response='Нет такого юзера',
+            response='No such user',
             status=400,
             mimetype='application/json'
         )
@@ -278,7 +278,7 @@ def increase_user_deposit():
         amount = float(amount)
     except ValueError:
         return Response(
-            response='Не похоже на дробное число',
+            response="Doesn't look like a fraction",
             status=400,
             mimetype='application/json'
         )
@@ -288,7 +288,7 @@ def increase_user_deposit():
         user=user
     )
     return Response(
-        response='Успешно',
+        response='Successfully',
         status=200,
         mimetype='application/json'
     )
@@ -301,14 +301,14 @@ def approve_withdrawal():
     withdrawal = Withdrawal.get(id=id)
     if withdrawal.approved:
         return Response(
-            response='Вывод уже был подтвержден',
+            response='Conclusion has already been confirmed',
             status=400,
             mimetype='application/json'
         )
     withdrawal.approved = True
     withdrawal.save()
     return Response(
-        response='Успешно',
+        response='Successfully',
         status=200,
         mimetype='application/json'
     )
@@ -350,7 +350,7 @@ def top_up_delete():
     top_up.delete_instance()
 
     return Response(
-        response='Успешно',
+        response='Successfully',
         status=200,
         mimetype='application/json'
     )
@@ -410,14 +410,14 @@ def top_up_received():
         user_id = int(user_id)
     except TypeError:
         return Response(
-            response='Неверный id пользователя',
+            response='Invalid user id',
             status=400,
             mimetype='application/json'
         )
     top_up = TopUp.get(id=id)
     if top_up.received:
         return Response(
-            response='Пополнение уже зачислено',
+            response='Replenishment already credited',
             status=400,
             mimetype='application/json'
         )
@@ -425,7 +425,7 @@ def top_up_received():
         user = User.get(User.chat_id == user_id)
     except DoesNotExist as e:
         return Response(
-            response='Нет такого пользователя',
+            response='No such user',
             status=400,
             mimetype='application/json'
         )
@@ -435,7 +435,7 @@ def top_up_received():
     top_up.save()
 
     return Response(
-        response='Успешно',
+        response='Successfully',
         status=200,
         mimetype='application/json'
     )

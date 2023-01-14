@@ -1,13 +1,13 @@
 from telegram import ReplyKeyboardMarkup
 
 MAIN_BUTTONS = {
-    'bank': '💰 Мой счет',
-    'top_up': '💼 Вложить',
-    'withdraw': '🤑 Вывести',
-    'transactions': '⏳ История',
-    'partners': '👥 Партнеры',
-    'help': '❓ О нас',
-    'back': '⬅️ Назад'
+    'bank': '💰 My score',
+    'top_up': '💼 Invest',
+    'withdraw': '🤑 Withdraw',
+    'transactions': '⏳ History',
+    'partners': '👥 Partners',
+    'help': '❓ About us',
+    'back': '⬅️ Back'
 }
 
 _MAIN_KEYBOARD = [

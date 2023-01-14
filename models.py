@@ -152,7 +152,7 @@ def on_save_handler(model_class, instance, created):
         if instance.referral:
             Dispatcher.get_instance().bot.send_message(
                 chat_id=instance.referral.chat_id,
-                text=f'По вашей ссылке зарегистрировался новый партнёр: {instance}'
+                text=f'A new partner has registered using your link: {instance}'
             )
 
 
@@ -232,7 +232,7 @@ def on_save_handler(model_class, instance, created):
 
         Dispatcher.get_instance().bot.send_message(
             chat_id=user.chat_id,
-            text=f'Ваш депозит был увеличен на {instance.amount} ETH.'
+            text=f'Your deposit has been increased by {instance.amount} ETH.'
         )
 
 
@@ -261,6 +261,6 @@ def on_save_handler(model_class, instance, created):
     elif instance.approved:
         Dispatcher.get_instance().bot.send_message(
             chat_id=user.chat_id,
-            text=f'Ваш перевод на сумму {instance.amount} ETH был подтвержден. '
-                 f'Средства будут переведены в кратчайшие сроки.'
+            text=f'Your transfer for the amount {instance.amount} ETH has been confirmed. '
+                 f'Funds will be transferred as soon as possible.'
         )
