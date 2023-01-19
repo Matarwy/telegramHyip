@@ -15,7 +15,7 @@ def _start_command(bot, update, args):
 
     try:
         user = User.get(chat_id=chat_id)
-        text = f'{first_name}, you are already registered in the system. Welcome home!'
+        text = f'{first_name}, you are already registered in the Bot. Welcome home!'
     except DoesNotExist:
         referral = None
         try:
@@ -33,7 +33,7 @@ def _start_command(bot, update, args):
             referral=referral
         )
 
-        text = f'{first_name}, you have been successfully registered in the system!'
+        text = f'{first_name}, you have been successfully registered in the Bot!'
 
     bot.send_message(chat_id=user.chat_id, text=text, reply_markup=keyboards.main_keyboard())
     return bot_states.MAIN
